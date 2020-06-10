@@ -4,6 +4,7 @@ import com.aaron.cloud.entities.CommonResult;
 import com.aaron.cloud.entities.Payment;
 import com.aaron.cloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,6 +19,9 @@ public class PaymentController {
 
     @Resource
     private PaymentService paymentService;
+
+    @Value("${server.port}")
+    private String serverPort;
 
     @PostMapping(value = "/payment/create")
     public CommonResult create(@RequestBody Payment payment) {
@@ -34,7 +38,7 @@ public class PaymentController {
     @GetMapping(value = "/payment/get/{id}")
     public CommonResult getPaymentById(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
-        log.info("*****查询结果：" + payment);
+        log.info("*****查询结果：" + payment + serverPort);
         if (payment != null) {
             return new CommonResult(200, "查询成功", payment);
         } else {
