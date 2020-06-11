@@ -3,7 +3,7 @@
 
 仅需更换POM文件依赖信息
 
-```$xslt
+```
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
@@ -18,7 +18,7 @@
 
 ```
 application.yml 文件
-```$xslt
+```yaml
 server:
   port: 80
 
@@ -33,7 +33,7 @@ spring:
 ```
 替换为
 
-```$xslt
+```yaml
 server:
   port: 80
 
